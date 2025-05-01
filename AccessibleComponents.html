@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessible Components: Search Box | Robyn Jecrois Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="searchbox.css" />
+  <style>
+    .project-detail h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent-blue); margin-bottom: 0.5rem; }
+    .project-detail h3 { font-size: 1.5rem; margin-top: 2rem; color: var(--accent-gold); }
+    .project-image { width: 100%; height: auto; border-radius: 4px; }
+    table.compare { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    table.compare th, table.compare td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    figure { margin: 1rem 0; }
+    figcaption { font-size: 0.875rem; color: #555; text-align: center; margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <nav class="container">
+      <a href="index.html" class="logo">Robyn Jecrois</a>
+      <div>
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#experience">Work Experience</a>
+        <a href="https://www.linkedin.com/in/robyn-jecrois/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container project-detail">
+    <h2>Accessible Components: 🔎 Search Box 🔎</h2>
+    <p> This project aims investigate the Search Box Component. The goal is to understand how
+        the search box displays different outputs and manages different inputs.
+        The goal is to explore how components like the search box balances
+        accessibility, usability, and efficiency. By examining the search box
+        across different applications and analyzing the various states we'll
+        learn more about how design choices can create trade-offs that impact
+        the learnability, memorability, and efficiency of a component. We'll
+        also learn about the how usable and accessible a component like the
+        search box is across various applications</p>
+        <!-- New Section: What is a Search Box -->
+    <section aria-labelledby="what-is-search-label">
+      <h3 id="what-is-search-label">Understanding The Component  🔎</span></h3>
+      <form role="search" aria-describedby="search-desc" class="search-demo">
+        <label for="demo-search" class="visually-hidden">Search</label>
+        <input type="search" id="demo-search" name="q" placeholder="What is a Search Box?" />
+        <button type="submit" aria-label="Submit search">
+          <span aria-hidden="true">&#128270;</span>
+        </button>
+      </form>
+      <p id="search-desc">
+        A search box is a user interface element that allows users to enter text in order to search for specific content or information within a website or application. Typically, the search box includes a text input field where users can type their queries. The search box is usually identified by a magnifying glass icon. When the user enters a search term and submits the query, the system processes the input and returns relevant results, which can be displayed in various formats like a list, grid, or suggestions dropdown.
+      </p>
+        <!-- Three-picture row -->
+      <div class="row picture-row">
+        <figure class="col-4">
+          <img src="../img/google-docs.png" alt="Search box in Google Docs" class="project-image" />
+          <figcaption>Google Docs</figcaption>
+        </figure>
+        <figure class="col-4">
+          <img src="../img/finder.png" alt="Search box in macOS Finder" class="project-image" />
+          <figcaption>macOS Finder</figcaption>
+        </figure>
+        <figure class="col-4">
+          <img src="../img/adobe.png" alt="Search box in Adobe Premiere Pro" class="project-image" />
+          <figcaption>Adobe Premiere Pro</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Part 1 -->
+    <h3>Part 1: Input</h3>
+    <p>Any user action—clicking, typing, touching, or keyboard interaction—that changes the component's state or content.</p>
+    <div class="row">
+      <figure class="col-12 col-md-4">
+        <img src="../img/new inputs.png" alt="Search box in Google Docs" class="project-image" />
+        <figcaption>Google Docs</figcaption>
+      </figure>
+    </div>
+    <ul>
+      <li><strong>Visual feedback:</strong> focus rings, hover highlights, placeholder text.</li>
+      <li><strong>Activation:</strong> clicking the magnifier icon vs. pressing Enter key.</li>
+      <li><strong>Screen reader support:</strong> accessible labels (ARIA-label) and announcements.</li>
+      <li><strong>Barriers:</strong> small click targets, lack of live region updates.</li>
+    </ul>
+
+    <!-- Part 2 -->
+    <h3>Part 2: Output</h3>
+    <p>The component's output includes visual, auditory, or textual feedback representing its state and search results.</p>
+    <figure>
+      <img src="../img/outputs.png" alt="Output cues comparison" class="project-image" />
+      <figcaption>Cues comparison across apps</figcaption>
+    </figure>
+
+
+    <!-- Part 3 -->
+    <h3>Part 3: State Models &amp; Revised Design</h3>
+    <p><strong>Original State Models:</strong> Mouse (Idle → Hover → Click → Active → Idle), Keyboard (Idle → Focus → Input → Submit → Idle).</p>
+    <p><strong>Trade-offs for Revision:</strong> Added ARIA-live region for dynamic result announcements (improves screen reader support, slight performance overhead). Enlarged hit area (better targeting, minimal layout shift).</p>
+    <div class="row">
+      <figure class="col-6 text-center">
+        <img src="../img/original.png" alt="Original search box state diagram" class="project-image" />
+        <figcaption>Original</figcaption>
+      </figure>
+      <figure class="col-6 text-center">
+        <img src="../img/revigor.png" alt="Revised search box state diagram" class="project-image" />
+        <figcaption>Revised</figcaption>
+      </figure>
+    </div>
+
+      <!-- Part 4 -->
+    <h3>Part 4: Redesign</h3>
+        <p><strong>Redesign reflection:</strong>The revised design balances learnability, 
+          memorability, efficiency, and accessibility by streamlining state transitions, reducing 
+          keystrokes for activation, reinforcing visual and ARIA cues, and maintaining consistent 
+          interaction patterns.</p>
+           <div class="row">
+            <figure class="col-6 text-center"></figure>
+                    <img src="../img/design new.png" alt="Revised search box state diagram" class="project-image" />
+
+
+            </div>
+
+
+
+    <!-- Part 5 -->
+    <h3>Part 4: Reflection</h3>
+    <ul>
+      <li>Discovering inconsistent focus indicators highlighted the need for system vs. custom styling.</li>
+      <li>Screen reader testing revealed failures necessitating ARIA-live regions.</li>
+      <li>Balancing visual clarity with minimal keystrokes led to larger interactive zones.</li>
+      <li>State modeling deepened understanding of user flows and potential dead-ends.</li>
+      <li>Future designs will prioritize dynamic feedback and consistent keyboard shortcuts plus aria labels.</li>
+    </ul>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Robyn Jecrois. Je Crois.</p>
+    </div>
+  </footer>
+</body>
+</html>
