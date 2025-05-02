@@ -1,4 +1,4 @@
-/* Visually hidden helper */
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -11,14 +11,14 @@
   border: 0;
 }
 
-/* Demo search box container */
+
 .search-demo {
   display: flex;
   max-width: 400px;
   margin: 1rem 0;
 }
 
-/* Search input */
+
 .search-demo input[type="search"] {
   flex: 1;
   padding: 0.5rem;
@@ -27,7 +27,7 @@
   font-size: 1rem;
 }
 
-/* Search button */
+
 .search-demo button {
   display: inline-flex;
   align-items: center;
